@@ -77,63 +77,27 @@
                     <th>Xóa</th>
                 </tr>
             </thead>
+            <thead>
+                <tr>
+                    <th><img width="240" height="180" style="border-radius: 10px; border: 2px solid #FFF;" src="Ảnh\Cam.png"></th>
+                    <th>Cam</th>
+                    <th>2kg</th>
+                    <th>65.000/kg</th>
+                    <th>130.000</th>
+                    <th><button class="checkout" onclick="checkout()">Xóa</button></th>
+                </tr>
+            </thead>
             <tbody id="cartTableBody">
             </tbody>
         </table>
 
         <div class="total-price-container">
-            <p>Tổng cộng: <span id="totalPrice">0 VND</span></p>
+            <p>Tổng cộng: <span id="totalPrice">130.000 VND</span></p>
             <button class="checkout" onclick="checkout()">Thanh toán</button>
         </div>
     </div>
-
-    <script>
-        let cart = [
-            { name: "Sầu riêng", price: 120000, quantity: 2, image: "https://via.placeholder.com/100" },
-            { name: "Cam", price: 30000, quantity: 3, image: "https://via.placeholder.com/100" },
-            { name: "Măng cụt", price: 150000, quantity: 1, image: "https://via.placeholder.com/100" }
-        ];
-
-        function displayCart() {
-            const cartTableBody = document.getElementById('cartTableBody');
-            cartTableBody.innerHTML = ''; 
-
-            cart.forEach((product, index) => {
-                const row = document.createElement('tr');
-                const productTotal = product.price * product.quantity;
-                total += productTotal;
-
-                row.innerHTML = `
-                    <td><img src="${product.image}" class="product-img" alt="${product.name}"></td>
-                    <td>${product.name}</td>
-                    <td><input type="number" class="quantity" value="${product.quantity}" min="1" onchange="updateQuantity(${index}, this.value)"></td>
-                    <td>${product.price.toLocaleString()} VND</td>
-                    <td>${productTotal.toLocaleString()} VND</td>
-                    <td><button onclick="removeProduct(${index})">Xóa</button></td>
-                `;
-                cartTableBody.appendChild(row);
-            });
-            document.getElementById('totalPrice').textContent = `${total.toLocaleString()} VND`;
-        }
-        function updateQuantity(index, quantity) {
-            cart[index].quantity = parseInt(quantity);
-            displayCart();
-        }
-
-        function removeProduct(index) {
-            if (confirm("Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?")) {
-                cart.splice(index, 1);
-                displayCart();
-            }
-        }
-
-        function checkout() {
-            alert("Chức năng thanh toán đang được phát triển.");
-        }
-        displayCart();
-    </script>
     </body>
     <footer>
-        <p>@HBP</p>
+        <p>@Trái cây Việt</p>
     </footer>
 </html>
